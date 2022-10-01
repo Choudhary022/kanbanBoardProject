@@ -1,0 +1,18 @@
+#tittle{
+    padding-left: 40%;
+}
+#title-block {
+    display:flex;
+    justify-content: left;
+    align-items: center;
+  }
+  img{
+    max-width: fit-content;
+    max-height: 100px;
+    padding-right: 10px;
+  }
+    
+  #home-link {
+    text-decoration: none;
+    color: whitesmoke;
+  }

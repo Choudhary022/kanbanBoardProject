@@ -1,0 +1,87 @@
+    #header{
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      body{
+        background-image: url("src\assets\update.jpg");
+        width: 100%;
+        min-height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        overflow-y: auto;
+    }
+      
+      #title-block {
+        display:flex;
+        justify-content: left;
+        align-items: center;
+      }
+      img{
+        max-width: fit-content;
+        max-height: 100px;
+        padding-right: 10px;
+      }
+      
+      #home-link {
+        text-decoration: none;
+        color: whitesmoke;
+      }
+      
+     #routLink{
+        text-decoration: none;
+        color: whitesmoke;
+     }
+      
+      .sidenav .mat-toolbar {
+        background: inherit;
+      }
+      
+      .mat-toolbar.mat-primary {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      .sec{
+        padding-top: 0px;
+        padding-left: 32%;
+        width: 100%;
+    }
+    
+    .logo{
+     text-align: center;
+     width: fit-content;
+    }
+    
+    button{
+     margin-left: 3%;
+    }
+    
+    .xy {
+     color: red;
+     text-align: left;
+     font-size: small;
+     width: fit-content;
+    }
+    
+    #routLink1{
+        text-decoration: underline;
+        color: crimson;
+        font-weight: bolder;
+     }
+      
+    
+    
+    @media (min-width:428px ) and (max-width:988px){
+    
+    .sec{
+     padding-top: 4%;
+     /* padding-left: 32%; */
+     width: 70%;
+    }
+    }
+      
+      

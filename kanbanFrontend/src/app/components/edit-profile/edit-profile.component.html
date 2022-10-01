@@ -1,0 +1,105 @@
+<body>
+    <mat-toolbar id="header" color="primary">
+
+        <div id="title-block">
+            <a id="home-link">
+                <h1><img  class="a" src="..\assets\logo1.png" alt="image not found"></h1>
+            </a>
+
+
+        </div>
+        <div>
+            <button mat-icon-button  >
+                <mat-icon style="margin-top: 10px; font-size: xx-large; padding-right:50px;"
+                 routerLink="/dashboard" matTooltip="Back">keyboard_backspace</mat-icon>
+            </button>
+
+        </div>
+    </mat-toolbar>
+
+    <section class="text-center text-lg-start sec">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+            <div class="container py-4">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <div class="card cascading-right"
+                            style="background: hsla(204, 74%, 75%, 0.55); backdrop-filter: blur(30px);">
+                            <div class="card-body p-5 shadow-5 text-center">
+                                <h2 class="fw-bold mb-2 text-uppercase border-bottom">Edit Profile</h2>
+                                <div class="form-outline mb-4">
+                                    <div>
+                                        <img class="img-fluid mb-2"
+                                            style="width: 100px; height: 70px; border-radius: 50%;"
+                                            src="assets\profile.jpg">
+                                    </div>
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab" for="name">Full Name</label>
+                                        </div>
+                                        <input type="text" id="fullName" formControlName="fullName" name="fullName"
+                                            placeholder="Full Name" class="form-control">
+                                        <div *ngIf="fullName?.invalid && (fullName?.dirty||fullName?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="fullName?.errors?.['required']">
+                                                *Your Full Name is required
+                                            </div>
+                                            <div *ngIf="fullName?.errors?.['minlength']" class="alert xy">
+                                                *Your Full Name should have Mininum 3 characters
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab" for="username">Email
+                                                ID</label></div>
+                                        <input type="email" id="emaliId" formControlName="emailId" name="username"
+                                            placeholder="Email Id" class="form-control">
+                                        <div *ngIf="emailId?.invalid && (emailId?.dirty||emailId?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="emailId?.errors?.['required']">
+                                                *Enter valid Email Id
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab" for="image">Contact
+                                                Number</label></div>
+                                        <input type="text" id="contact" formControlName="contact" name="contact"
+                                            placeholder="Contact No." class="form-control">
+                                        <div *ngIf="contact?.invalid && (contact?.dirty||contact?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="contact?.errors?.['required']">
+                                                *Contact Number Required
+                                            </div>
+                                            <div *ngIf="contact?.errors?.['minlength']" class="alert xy">
+                                                *Please Enter Valid Contact Number
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <form action="/action_page.php">
+                            <label for="img">Select image:</label>
+                            <input type="file" id="img" (change)="imageSubmit($event)" name="img" accept="image/*" formControlName="image" >
+                            <br><br>
+                            <input class="btn btn-secondary btn-sm mb-3" type="submit" >
+                          </form>   
+                          <div><img [src]="url" *ngIf="url"></div>                 
+                          <hr> -->
+                                <button class="btn btn-dark btn-block mb-3" type="submit">Update</button><br><br>
+                                <!-- [disabled]="profileForm.invalid" -->
+                                <div>
+                                    <p class="mb-0">Everything is up to Date? <a id="routLink1"
+                                            routerLink="/dashboard">Cancel</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>

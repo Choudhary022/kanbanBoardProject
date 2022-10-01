@@ -1,0 +1,78 @@
+#routLink1{
+  text-decoration: none;
+  color: rgb(77, 12, 170);
+  font-weight: bolder;
+}
+
+.main{
+  margin-left: 0%;
+  /* align-items: flex-end; */
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+#header{
+  
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  align-items: center;
+}
+body{
+  background-image: url("src/assets/login5.jpg");
+  width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  overflow-y: auto;
+}
+
+#title-block {
+  display:flex;
+  justify-content: left;
+  align-items: center;
+}
+img{
+  max-width: fit-content;
+  max-height: 100px;
+  padding-right: 10px;
+}
+
+#home-link {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+#routLink{
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.logo{
+  text-align: center;
+  width: fit-content;
+ }
+ .logo1{
+  /* text-align: right; */
+  width: 170%;
+ }
+ .xy {
+  color: red;
+  text-align: left;
+  font-size: small;
+  width: fit-content;
+ }

@@ -1,0 +1,100 @@
+body{
+    background-image: url("src\assets\login.jpg");
+    width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    overflow-y: auto;
+}
+
+.sec{
+       width: 100%;
+}
+
+button{
+    /* text-align: right; */
+    margin-left: 5%;
+}
+
+  #routLink1{
+    text-decoration: none;
+    color: rgb(77, 12, 170);
+    font-weight: bolder;
+ }
+
+  .main{
+    margin-left: 50%;
+    /* align-items: flex-end; */
+  }
+
+  @media (max-width: 991.98px) {
+    .cascading-right {
+      margin-right: 0;
+    }
+  }
+  #header{
+    
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    align-items: center;
+  }
+  
+  #title-block {
+    display:flex;
+    justify-content: left;
+    align-items: center;
+  }
+  img{
+    max-width: fit-content;
+    max-height: 100px;
+    padding-right: 10px;
+  }
+  
+  #home-link {
+    text-decoration: none;
+    color: whitesmoke;
+  }
+  
+ #routLink{
+    text-decoration: none;
+    color: whitesmoke;
+ }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .logo{
+    /* padding-left: 15px; */
+    width: fit-content;
+    font-weight: bolder;
+   }
+   .xy {
+    color: red;
+    text-align: left;
+    font-size: small;
+    /* width: fit-content; */
+   }
+
+.priority{
+    background-color:rgb(56, 70, 70);
+    color: white;
+    width: 15%;
+    border-radius: 15%;
+}
+.card{
+    margin: 0%;
+    background-color: rgb(176, 181, 184);
+}
+.Radio{
+    text-align: left;
+}
+.ab{
+    padding: 4px;
+    font-size: small;
+}

@@ -1,0 +1,105 @@
+<body>
+    <mat-toolbar id="header" color="primary">
+
+        <div id="title-block">
+            <a id="home-link" href="/">
+                <h1><img mattooltip="Logo" class="a" src="..\assets\logo1.png" alt="image not found"></h1>
+            </a>
+
+            
+        </div>
+        <div>
+
+            <button mat-icon-button matTooltip="Back">
+                <a id="routLink" routerLink="/dashboard">
+                    <mat-icon style="margin-top: 10px; font-size: xx-large; padding-right:50px;">keyboard_backspace
+                    </mat-icon>
+                </a>
+            </button>
+
+        </div>
+    
+      </mat-toolbar>
+
+    <section class="vh-100 gradient-custom sec">
+        <form [formGroup]="UpdateTask" (ngSubmit)="updateTask()" class="form-horizontal">
+
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card text-black" style="border-radius: 1rem;">
+                            <div class="card-body p-2 text-center">
+
+                                <div class="mb-md-2 mt-md-2">
+
+                                    <h1 class="fw-bold mb-2 text-uppercase border-bottom">Update Task</h1>
+                                    
+                                </div>
+
+
+                                <div class="form-outline form-white mb-1">
+                                    <div class="logo"><label class="control-label ab" for="toDo">TO DO</label>
+                                    </div>
+                                    <input type="text" id="toDo" formControlName="toDo" name="toDo" placeholder="To Do"
+                                        class="form-control form-control-lg ab">
+                                    <div *ngIf="toDo?.invalid && (toDo?.dirty||toDo?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="toDo?.errors?.['required']">Please Enter Task-Required*
+
+                                            </div>
+                                        </div>
+                                </div>
+
+
+                                <div class="form-outline form-white mb-1">
+                                    <div class="logo"><label class="control-label ab" for="dueDate">Due
+                                            Date</label></div>
+                                    <input type="date" [min]="todayDate" id="dueDate" formControlName="dueDate"
+                                        name="dueDate" placeholder="dueDate" class="form-control form-control-lg ab">
+                                    <div *ngIf="dueDate?.invalid && (dueDate?.dirty||dueDate?.touched)"
+                                    class="alert xy">
+                                    <div *ngIf="dueDate?.errors?.['required']">
+                                        Please Enter Date-Required*
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- <div class="form-outline form-white mb-3">
+                                    <div class="logo"><label class="control-label ab" for="toDo">Task Status</label>
+                                    </div>
+                                    <input type="number" id="taskStatus" formControlName="taskStatus" name="taskStatus" placeholder="Task Status"
+                                        class="form-control form-control-lg ab">
+                                    <div *ngIf="taskStatus?.invalid && (taskStatus?.dirty||taskStatus?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="taskStatus?.errors?.['required']">Please Enter Task Status-Required*
+
+                                            </div>
+                                        </div>
+                                </div> -->
+
+                                <div class="form-outline form-white mb-3 Radio">
+                                    <div class="priority">Priority:</div><br>
+                                    <input type="radio" formControlName="priority" id="low" name="priority" value="Low">
+                                    <label for="low" style="color: darkblue;">Low Priority</label><br>
+                                    <input type="radio" formControlName="priority" id="normal" name="priority"
+                                        value="Normal">
+                                    <label for="normal" style="color: darkblue;">Normal Priority</label><br>
+                                    <input type="radio" formControlName="priority" id="high" name="priority"
+                                        value="High">
+                                    <label for="high" style="color: darkblue;">High Priority</label><br>
+                                </div>
+
+                                <button class="btn btn-outline-light btn-sm px-5 mb-4" type="submit"
+                                    [disabled]="UpdateTask.invalid">Update Task</button>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>

@@ -1,0 +1,117 @@
+<body>
+    <mat-toolbar id="header" color="primary">
+
+        <div id="title-block">
+            <a id="home-link" href="/">
+                <h1><img mattooltip="Logo" class="a" src="..\assets\logo1.png" alt="image not found"></h1>
+            </a>
+        </div>
+        <div class="example-button-row" id="title-block1">
+
+
+            <button mat-button routerLink="/homepage">Home</button>
+            <button mat-button routerLink="/contactus">Contact Us</button>
+
+
+            <button mat-button routerLink="/login" matTooltip="Login">
+                <mat-icon>login</mat-icon>
+            </button>
+
+        </div>
+    </mat-toolbar>
+
+    <section class="text-center text-lg-start sec">
+        <form [formGroup]="profileForm" (ngSubmit)="signupdata()" class="form-horizontal">
+            <div class="container py-4">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-4 mb-0 mb-lg-0">
+                        <div class="card cascading-right"
+                            style="background: hsla(307, 83%, 55%, 0.55); backdrop-filter: blur(30px);">
+                            <div class="card-body p-5 shadow-5 text-center">
+                                <h2 class="fw-bold mb-4 text-uppercase border-bottom">Registration Form</h2>
+                                <div class="form-outline mb-4">
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab" for="name">Full Name</label>
+                                        </div>
+                                        <input type="text" id="fullName" formControlName="fullName" name="fullName"
+                                            placeholder="Full Name" class="form-control">
+                                        <div *ngIf="fullName?.invalid && (fullName?.dirty||fullName?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="fullName?.errors?.['required']">
+                                                *Your Full Name is required
+                                            </div>
+                                            <div *ngIf="fullName?.errors?.['minlength']" class="alert xy">
+                                                *Your Full Name should have Mininum 3 characters
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-outline mb-4">
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab" for="username">Email
+                                                ID</label></div>
+                                        <input type="email" id="emaliId" formControlName="emailId" name="username"
+                                            placeholder="Email Id" class="form-control">
+                                        <div *ngIf="emailId?.invalid && (emailId?.dirty||emailId?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="emailId?.errors?.['required']">
+                                                *Enter valid Email Id
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab"
+                                                for="password">Password</label></div>
+                                        <input type="password" id="password" formControlName="password" name="password"
+                                            placeholder="Password" class="form-control">
+                                        <div *ngIf="password?.invalid && (password?.dirty||password?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="password?.errors?.['required']">
+                                                *Passeord required
+                                            </div>
+                                            <div *ngIf="password?.errors?.['minlength']" class="alert xy">
+                                                *Please Enter Valid Password of length range 6-20
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <div class="controls">
+                                        <div class="logo"><label class="control-label ab" for="image">Contact
+                                                Number</label></div>
+                                        <input type="text" id="contact" formControlName="contact" name="contact"
+                                            placeholder="Contact No." class="form-control">
+                                        <div *ngIf="contact?.invalid && (contact?.dirty||contact?.touched)"
+                                            class="alert xy">
+                                            <div *ngIf="contact?.errors?.['required']">
+                                                *Contact Number Required
+                                            </div>
+                                            <div *ngIf="contact?.errors?.['minlength']" class="alert xy">
+                                                *Please Enter Valid Contact Number
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-dark btn-block mb-3" type="submit"
+                                    [disabled]="profileForm.invalid">Signup</button><br><br>
+                                <div>
+                                    <p class="mb-0">Already have account? <a id="routLink1"
+                                            routerLink="/login">Login</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>

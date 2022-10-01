@@ -1,0 +1,78 @@
+<html>
+    <head>
+       <style>
+        .image{
+           background-image: url('/kanbanFrontend/src/assets/banner.jpg');
+           width: 100%;
+           max-width: fit-content;
+           height:200px;
+        }
+        img{
+            width: 100%;
+            max-width: fit-content;
+            padding: 25px;
+            margin-left: 50%;
+        }
+       </style>
+    </head>
+
+<body>
+    <mat-toolbar id="header" color="primary">
+
+        <div id="title-block">
+          <a id="home-link" href="/"><h1><img mattooltip="Logo" class="a" src="..\assets\logo1.png" alt="image not found"></h1></a>
+        </div> 
+        <div id="title-block">
+          <span style="padding: 10px;font-size:medium;">Home</span>
+          <span style="padding: 10px;font-size:medium;">Services</span>
+          <span style="padding: 10px;font-size:medium;">Contact Us</span>
+          <span style="padding: 10px;font-size:medium;"><a routerLink="/about">About</a></span>
+        </div>
+        <div>
+          <button mat-icon-button matTooltip="Login">
+            <a id="routLink" routerLink="/login"><mat-icon style="margin-top: 10px;">login</mat-icon></a>
+          </button>
+          <button mat-icon-button matTooltip="Signup">
+            <a id="routLink" routerLink="/signup"><mat-icon style="margin-top: 10px;">account_circle</mat-icon></a>
+          </button>
+          
+        </div>
+    </mat-toolbar>
+    <div class="image">
+        <!-- <img src="/assets/banner.jpg" alt="no image"> -->
+        <p>djhbefhbvhjfdbvhjfvjnfdjvn</p>
+    </div>
+<div>
+   
+
+  <h3>ABOUT:</h3>
+  <h2><b>What is kanbanboard ?</b></h2>
+    Kanban is a project management tool that allows you to get a more visual overview of the tasks that either need to get done or are complete. 
+    At its core, it consists of a physical or digital board with three columns (To Do, In Progress, Done) and tasks listed as story cards. <br><br>
+    
+   <h2><b>six rules for the effective application of Kanban:</b></h2> 
+    1) Never pass on defective products<br>
+    2) Take only what is needed<br> 
+    3) Produce the exact quantity required<br>
+    4) Level the production<br> 
+    5) Fine-tune production<br>
+    6) Stabilise and rationalise the process.<br><br>
+
+
+    <h2><b>Structure of kanabanboard</b></h2>
+    The basic structure of the Kanban board online has three columns: to-do, in-progress, and done. 
+    Each column represents the stage of development from the beginning when ideas are created, 
+    to the work in progress, and then finally, to when the work has been completed.<br><br>
+    
+    <h2><b>Workflow</b></h2>
+    A Kanban workflow defines explicit policies and principles, followed by the Kanban team. 
+    Its main objective is to represent the rules and procedures of work while the work is flowing across different stages of its development and delivery cycle.
+
+    Create a project and a board.
+      Set and manage activities in the workflow. Choose online Kanban boards with cards to communicate statuses, progress, and issues.
+      Add tasks, bugs, or user stories to the backlog.
+   
+  
+    </div>
+</body>
+</html>

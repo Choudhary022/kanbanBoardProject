@@ -1,0 +1,442 @@
+<div style="background-color: whitesmoke; height: 655px;" >
+  <mat-toolbar color="primary">
+
+    <button aria-label="Toggle sidenav" mat-icon-button (click)="snav.toggle()">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+
+
+
+    <div id="title-block">
+      <a id="home-link">
+        <h1><img id="logoimg" mattooltip="Logo" class="a" src="..\assets\logo1.png" alt="image not found"></h1>
+      </a>
+    </div>
+
+    <div style="width:1000px">
+
+      <input class="search" placeholder="Search Task" type="search" aria-label="Search To-Do List"
+        [(ngModel)]="searchTask">
+
+    </div>
+
+
+    <div class="example-button-row" id="title-block" style="position:relative; ">
+
+      
+      <!-- <button mat-button routerLink="/contactus">Contact Us</button> -->
+      <!-- <button mat-button routerLink="/about">About</button> -->
+    </div>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="profile" aria-label="Example icon-button with a menu"
+      matTooltip="User Profile">
+      <div *ngIf="validImage">
+        <img [src]="imageUrl1" alt="error" id="userProfile">
+      </div>
+      <div *ngIf="!validImage">
+        <img src="/assets/profile image.jpg" alt="error" id="userProfile">
+      </div>
+    </button>
+    <mat-menu #profile="matMenu">
+      <div style="text-align: center;">
+        {{name}}
+      </div>
+      <button mat-menu-item (click)="triggered()">
+        <mat-icon>face</mat-icon>Add Profile Picture
+
+      </button>
+    </mat-menu>
+
+
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+      matTooltip="Log Out" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+
+
+  </mat-toolbar>
+
+
+
+  <mat-sidenav-container class="sidenav-container" >
+    <mat-sidenav #snav class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'push' : 'side'" [opened]="false" style="background-color: whitesmoke;">
+      <mat-nav-list  >
+
+        <button mat-menu-item >
+          <a routerLink="/edit-profile" style="text-decoration: none; color:black" style="font-size: 15px;">
+            <mat-icon style="transform: scale(1.5); padding-right: 10px;">edit</mat-icon>Edit Profile
+          </a>
+        </button>
+
+        
+
+        <button mat-menu-item [matMenuTriggerFor]="option">
+          <mat-icon style="transform: scale(1.5); padding-right: 10px;">settings</mat-icon>
+          <span style="font-size: 15px;">Settings</span>
+        </button>
+
+        <!-- <button mat-menu-item class="dropdown-btn" (click)="toggelDropdown()">
+
+          <a  style="text-decoration: none; color:black ;font-size: 15px;">
+            <mat-icon style="transform: scale(1.5); padding-right: 10px;">group</mat-icon>Total Team  ({{teamCount}}) <i class="fa fa-caret-down"></i>
+          </a>
+        </button>
+        <div class="dropdown-container" >
+          <div *ngFor="let u of totalTeams" style="margin-top: -2px;">
+            <span style="font-size: 15px;padding-top: 20px;">
+              {{u.teamId}}
+            </span>
+            <button mat-icon-button style="margin-left: 20px;" class="icon" matTooltip="Edit Team" (click)="editTeam(u)">
+              <mat-icon style="transform: scale(1.5);">delete_forever</mat-icon>
+            </button>
+            <i class="far fa-edit mb-5"></i>
+            <button mat-icon-button style="margin-left: 20px;" class="icon" matTooltip="Delete Team" (click)="deleteTeam(u)">
+              <mat-icon style="transform: scale(1.5);">delete_forever</mat-icon>
+            </button>
+          </div>
+            
+        </div>
+
+       
+      
+
+        <button mat-menu-item class="dropdown-btn" (click)="toggelMemberDropdown()">
+          <a  style="text-decoration: none; color:black; font-size: 15px;">
+            <mat-icon style="transform: scale(1.5); padding-right: 10px;">account_box</mat-icon>Team Details <i class="fa fa-caret-down"></i>
+          </a>
+        </button>
+ 
+        <div class="dropdown-container">
+          <div *ngFor="let u of totalTeams">
+          <button mat-menu-item (click)="toggelTeamMemberDropdown(u)">
+            <a  style="text-decoration: none; color:black; font-size: 15px;">
+              <mat-icon style="transform: scale(1.5); padding-right: 10px;">account_box</mat-icon>{{u.teamId}}
+            </a>
+          </button>
+         
+        </div>
+            
+        </div> -->
+         <button mat-menu-item  (click)="toggelDropdown()">
+          <a  style="text-decoration: none; color:black ;font-size: 15px;">
+            <mat-icon style="transform: scale(1.5); padding-right: 10px;">group</mat-icon>Total Team  ({{teamCount}}) 
+          </a>
+        </button>
+        <button mat-menu-item  (click)="toggelMemberDropdown()">
+          <a  style="text-decoration: none; color:black; font-size: 15px;">
+            <mat-icon style="transform: scale(1.5); padding-right: 10px;">account_box</mat-icon>Team Details 
+          </a>
+        </button>
+
+        <button mat-menu-item>
+          <a routerLink="/help" style="text-decoration: none; color:black ; font-size: 15px;">
+            <mat-icon style="transform: scale(1.5); padding-right: 10px;">help</mat-icon>Help
+          </a>
+
+          <mat-menu #option="matMenu">
+            <button mat-menu-item>
+              <mat-slide-toggle [(ngModel)]="useDefault" (ngModelChange)="onChange($event)" [color]="color">Enable
+                Notification</mat-slide-toggle>
+            </button>
+            <button mat-menu-item><a routerLink="/changePassword" style="text-decoration: none; color:black; font-size: 15px;">
+                <mat-icon>update</mat-icon>Change Password
+              </a></button>
+          </mat-menu>
+
+
+        </button>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content  >
+      <!-- here is the coontent -->
+
+      <div style=" overflow-x: hidden; background-color: whitesmoke; height:650px"  >
+
+        <div *ngIf="toggleTeamDropdown && teamCount!=0">
+          <mat-card class="member-card1">
+            <div *ngFor="let u of totalTeams" style="display:inline-flex;">
+              <span style="font-size: 15px;padding-top: 12px;">
+                {{u.teamId}}
+              </span>
+              <br>
+              <button mat-icon-button class="icon" matTooltip="Edit Team" (click)="editTeam(u)">
+                <i class="far fa-edit mb-5" style="padding-top: 9px;"></i>
+              </button>
+              <button mat-icon-button class="icon" matTooltip="Delete Team" (click)="deleteTeam(u)">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+              <br><hr>
+            </div>
+          <!-- </div> -->
+          </mat-card>
+      </div>
+
+
+      <div *ngIf="toggleMemberDropdown && teamCount!=0">
+        <mat-card class="member-card2">
+          <div *ngFor="let u of totalTeams">
+            <button mat-menu-item (click)="toggelTeamMemberDropdown(u)">
+              <a  style="text-decoration: none; color:black; font-size: 15px;">
+                <mat-icon style="transform: scale(1.5); padding-right: 10px;">account_box</mat-icon>{{u.teamId}}
+              </a>
+            </button>
+          </div>
+        <!-- </div> -->
+        </mat-card>
+    </div>
+
+
+        <div *ngIf="toggleMemberDropdown1 && memberCount!=0">
+          <mat-card class="member-card">
+              <div *ngFor="let v of memberList">
+              <span style="font-size: 15px;padding-top: 20px;">
+                Name: {{v.name}} <br>Member Id: {{v.memberId}} <br>Email: {{v.emailId}} <br>Contact Number: {{v.contact}}
+              </span>
+              <br>
+              <button mat-icon-button class="icon" matTooltip="Delete Member" (click)="deleteTeamMember(v)">
+                <mat-icon style="transform: scale(1);">delete_forever</mat-icon>
+              </button>
+              <br><hr>
+            </div>
+          <!-- </div> -->
+          </mat-card>
+      </div>
+
+        <div *ngIf="value">
+          <mat-card class="example-card">
+            <h2 style="color: blueviolet;">Image Uploading Module</h2>
+            <br>
+            <input type="file" (change)="onFileChanged($event)">
+            <br>
+            <button mat-icon-button (click)="onUpload()" value="upload">
+              <mat-icon color="primary">upload</mat-icon>
+              <span style="padding: 5px;">Upload</span>
+              <a routerLink="/newdashboard" style="text-decoration: none; padding-left: 10px; color:red; font-weight: bold;">Cancle</a>
+            </button>
+          </mat-card>
+        </div>
+        <div class="row" style="margin-bottom:50px ;">
+
+           <div class="coll" style="padding-left: 350px;  padding-bottom: 5px;">
+
+            <mat-chip-list cdkDropListOrientation="horizontal" class="example-chip" cdkDropList>
+              <mat-chip cdkDrag class="example-box" style="background-color: rgb(226, 99, 99);">High Priority</mat-chip>
+              <mat-chip cdkDrag class="example-box" style="background-color: rgb(187, 187, 127);">Normal Priority
+              </mat-chip>
+              <mat-chip cdkDrag class="example-box" style="background-color: rgb(67, 133, 73);">Low Priority</mat-chip>
+              <mat-chip cdkDrag class="example-box" style="font-size:medium ; color: blueviolet;"
+                routerLink="/taskstatus">
+                Add Task +
+              </mat-chip>
+              <mat-chip cdkDrag class="example-box">
+                Total Task ({{count}})
+              </mat-chip>
+
+              <mat-chip cdkDrag class="example-box">
+
+                <button mat-button  routerLink="/addteam" > Add Team</button>
+              </mat-chip>
+
+             
+
+
+            </mat-chip-list>
+
+
+          </div> 
+          <hr>
+
+
+
+          <div class="column-0 col-lg-2 col-xs-12 col-md-4" style="background-color:rgba(238,238,238,255)">
+            <div class="divscroll">
+
+              <div class="tittleBox">
+
+                <div class="headingData">TO DO <div class="counttask">({{ToDoCount}})</div>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 100%; margin: 5%;" *ngFor="let u of ToDoList | filter:searchTask">
+                <div class="card-body"
+                  [ngStyle]="{backgroundColor:u.priority==='High'?'rgb(226, 99, 99)': u.priority==='Normal'?'rgb(187, 187, 127)':'rgb(67, 133, 73)'}">
+                  <h5 class="card-title">{{u.toDo}}</h5>
+                  <p class="card-text">DateAssign: {{u.dateAssign}} <br> DueDate: {{u.dueDate}}</p>
+                  <button class="jump" (click)="getTask(u)" matTooltip="Task Status">Switch</button>
+                  <select class="bar" [(ngModel)]="changeTaskStatus" (ngModelChange)="onTaskSelected($event)">
+
+                    <option value="1">Research</option>
+                    <option value="2">In-Progress</option>
+                    <option value="3">Review</option>
+                    <option value="4">Completed</option>
+                  </select>
+                  <br>
+                  <button mat-icon-button class="icon" matTooltip="Update Task" (click)="updateTask(u)">
+                    <mat-icon>update</mat-icon>
+                  </button>
+                  <button mat-icon-button class="icon" matTooltip="Delete Task" (click)="deleteTask(u)">
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+          <div class="column-1 col-lg-2 col-xs-12 col-md-4" style="background-color:rgba(238,238,238,255)">
+            <div class="divscroll">
+
+
+              <div class="tittleBox">
+
+                <div class="headingData">Research <div class="counttask">({{ResearchCount}})</div>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 90%; margin: 5%;" *ngFor="let u of Research | filter:searchTask">
+                <div class="card-body"
+                  [ngStyle]="{backgroundColor:u.priority==='High'?'rgb(226, 99, 99)': u.priority==='Normal'?'rgb(187, 187, 127)':'rgb(67, 133, 73)'}">
+                  <h5 class="card-title">{{u.toDo}} </h5>
+                  <p class="card-text">DateAssign: {{u.dateAssign}} <br> DueDate: {{u.dueDate}}</p>
+                  <button class="jump" (click)="getTask(u)" matTooltip="Task Status">Switch</button>
+                  <select class="bar" [(ngModel)]="changeTaskStatus" (ngModelChange)="onTaskSelected($event)">
+                    <option value="0">To Do</option>
+                    <option value="2">In-Progress</option>
+                    <option value="3">Review</option>
+                    <option value="4">Completed</option>
+                  </select>
+                  <br>
+                  <button mat-icon-button class="icon" matTooltip="Update Task" (click)="updateTask(u)">
+                    <mat-icon>update</mat-icon>
+                  </button>
+                  <button mat-icon-button class="icon" matTooltip="Delete Task" (click)="deleteTask(u)">
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="column-2 col-lg-2 col-xs-12 col-md-4" style="background-color:rgba(238,238,238,255)">
+            <div class="divscroll">
+
+
+              <div class="tittleBox">
+
+                <div class="headingData">In-Progress <div class="counttask">({{InProgressCount}})</div>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 90%; margin: 5%;" *ngFor="let u of InProgress | filter:searchTask">
+                <div class="card-body"
+                  [ngStyle]="{backgroundColor:u.priority==='High'?'rgb(226, 99, 99)': u.priority==='Normal'?'rgb(187, 187, 127)':'rgb(67, 133, 73)'}">
+                  <h5 class="card-title">{{u.toDo}} </h5>
+                  <p class="card-text">DateAssign: {{u.dateAssign}} <br> DueDate: {{u.dueDate}}</p>
+                  <button class="jump" (click)="getTask(u)" matTooltip="Task Status">Switch</button>
+                  <select class="bar" [(ngModel)]="changeTaskStatus" (ngModelChange)="onTaskSelected($event)">
+                    <option value="0">To Do</option>
+                    <option value="1">Research</option>
+
+                    <option value="3">Review</option>
+                    <option value="4">Completed</option>
+                  </select>
+                  <br>
+                  <button mat-icon-button class="icon" matTooltip="Update Task" (click)="updateTask(u)">
+                    <mat-icon>update</mat-icon>
+                  </button>
+                  <button mat-icon-button class="icon" matTooltip="Delete Task" (click)="deleteTask(u)">
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column-3 col-lg-2 col-xs-12 col-md-6" style="background-color:rgba(238,238,238,255)">
+            <div class="divscroll">
+
+
+              <div class="tittleBox">
+
+                <div class="headingData">Review <div class="counttask">({{ReviewCount}})</div>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 90%; margin: 5%;" *ngFor="let u of Review | filter:searchTask">
+                <div class="card-body"
+                  [ngStyle]="{backgroundColor:u.priority==='High'?'rgb(226, 99, 99)': u.priority==='Normal'?'rgb(187, 187, 127)':'rgb(67, 133, 73)'}">
+                  <h5 class="card-title">{{u.toDo}} </h5>
+                  <p class="card-text">DateAssign: {{u.dateAssign}} <br> DueDate: {{u.dueDate}}</p>
+                  <button class="jump" (click)="getTask(u)" matTooltip="Task Status">Switch</button>
+                  <select class="bar" [(ngModel)]="changeTaskStatus" (ngModelChange)="onTaskSelected($event)">
+                    <option value="0">To Do</option>
+                    <option value="1">Research</option>
+                    <option value="2">In-Progress</option>
+                    <option value="4">Completed</option>
+                  </select>
+                  <br>
+                  <button mat-icon-button class="icon" matTooltip="Update Task" (click)="updateTask(u)">
+                    <mat-icon>update</mat-icon>
+                  </button>
+                  <button mat-icon-button class="icon" matTooltip="Delete Task" (click)="deleteTask(u)">
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="column-4 col-lg-2 col-xs-12 col-md-6" style="background-color:rgba(238,238,238,255)">
+            <div class="divscroll">
+
+              <div class="tittleBox">
+
+                <div class="headingData">Completed <div class="counttask">({{CompletedCount}})</div>
+                </div>
+              </div>
+
+
+              <div class="card" style="width: 90%; margin: 5%;" *ngFor="let u of Completed | filter:searchTask">
+                <div class="card-body"
+                  [ngStyle]="{backgroundColor:u.priority==='High'?'rgb(226, 99, 99)': u.priority==='Normal'?'rgb(187, 187, 127)':'rgb(67, 133, 73)'}">
+                  <h5 class="card-title">{{u.toDo}}</h5>
+                  <p class="card-text">DateAssign: {{u.dateAssign}} <br> DueDate: {{u.dueDate}}</p>
+                  <button mat-icon-button class="icon" matTooltip="Delete Task" (click)="deleteTask(u)">
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>

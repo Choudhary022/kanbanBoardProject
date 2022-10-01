@@ -1,0 +1,118 @@
+<body>
+    <mat-toolbar id="header" color="primary">
+
+        <div id="title-block">
+            <a id="home-link" href="/">
+                <h1><img mattooltip="Logo" class="a" src="..\assets\logo1.png" alt="image not found"></h1>
+            </a>
+        </div>
+        <div style="position:relative; left:452px">
+            <button mat-button> Home</button>
+            <button mat-button>Contact Us</button>
+            <button mat-button>About</button>
+    
+            </div>
+        <div>
+            
+            <button mat-icon-button matTooltip="Signup">
+            <a id="routLink" routerLink="/signup">
+                <mat-icon style="margin-top: 10px; font-size: xx-large; padding-right:55px;">account_circle</mat-icon>
+            </a>
+        </button>
+          
+        </div>
+    </mat-toolbar>
+
+    <section class="text-center text-lg-start">
+        <div class="container py-4">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-4 mb-5 mb-lg-0 main">
+                    <div class="card cascading-right"
+                        style="background-color:rgba(234, 207, 103, 0.864); backdrop-filter: blur(30px);">
+                        <div class="card-body p-5 shadow-5 text-center">
+                            <h1 class="fw-bold mb-3 text-uppercase border-bottom" style="font-weight: bolder;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">Team
+                            </h1>
+                            <p class="text-green-50 mb-3">Please Add Team</p>
+
+                            <form [formGroup]="addTeamForm" (ngSubmit)="addTeamFormCredentials()">
+
+                                <div class="form-outline mb-4">
+                                    <div class="logo"><label class="form-label" for="username">Team Number</label></div>
+                                    <input type="text" id="teamId" formControlName="teamId" name="teamId"
+                                        placeholder="Team Number" class="form-control">
+                                    <div *ngIf="addTeamForm.get('teamId')?.invalid && (addTeamForm.dirty||addTeamForm.touched)"
+                                        class="alert xy">
+                                        <div *ngIf="addTeamForm.get('teamId')?.errors?.['required']">
+                                            *Required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="setValue">
+                                <form #memberForm="ngForm" class="container mt-3">
+                                    <div class="row mb-6 justify-content-left">
+                                      <div class="form-outline mb-4">
+                                        <section  *ngFor="let address of members; let i = index;">
+                                            <h3 style="font-weight: bold;">Member {{i+1}}</h3>
+                                          <div class="row  mb-4">
+                                            <div class="form-outline mb-4">
+                                                <div class="form-group">
+                                                    <div class="logo"><label class="form-label" for="username">Member Id</label></div>
+                                                    <input type="text" class="form-control" [(ngModel)]="address.memberId" name="memberId" placeholder="Member Id"/>
+                                                  </div>
+                                            </div>
+                                          </div>
+                                          <div class="row  mb-4">
+                                            <div class="form-outline mb-4">
+                                                <div class="form-group">
+                                                    <div class="logo"><label class="form-label" for="username">Email Id</label></div>
+                                                    <input type="email" class="form-control" [(ngModel)]="address.emailId" name="emailId" placeholder="Email Id"/>
+                                                  </div>
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="row  mb-4">
+                                            <div class="form-outline mb-4">
+                                                <div class="form-group">
+                                                    <div class="logo"><label class="form-label" for="username">Member name</label></div>
+                                                    <input type="text" class="form-control" [(ngModel)]="address.name" name="name" placeholder="Name"/>
+                                                  </div>
+                                            </div>
+                                          </div>
+                                          <div class="row  mb-4">
+                                            <div class="form-outline mb-4">
+                                                <div class="form-group">
+                                                    <div class="logo"><label class="form-label" for="username">Contact Number</label></div>
+                                                    <input type="text" class="form-control" [(ngModel)]="address.contact" name="contact" placeholder="Contact Number"/>
+                                                  </div>
+                                            </div>
+                                          </div>
+                                          <div class="row md-4 ">
+                                            <div class="form-outline mb-4 text-right">
+                                                <button type="button" class="btn btn-danger btn-sm" (click)="removeMember(i)" >Remove</button>
+                                            </div>
+                                          </div>
+                                         
+                                        </section>
+                                      </div>
+                                    </div>
+                                  
+                                  </form>
+                                  </div>
+                                  <div class="col-6 text-left" >
+                                    <button type="button" class="btn btn-primary mb-2" (click)="addMember()">Add Members</button>
+                                </div>
+                     
+                     <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="addTeamForm.invalid" >
+                        Update
+                    </button>   
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+
+</body>
+
